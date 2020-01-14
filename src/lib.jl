@@ -1,6 +1,7 @@
 
 function ChainRulesCore.rrule(d::Flux.Dense, x)
     θ = d.W*x + d.b
+
     Y, ∂Ȳ = frule(broadcast, d.σ, θ)
 
     function dense_pullback(ȳ)
